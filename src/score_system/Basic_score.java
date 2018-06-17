@@ -6,7 +6,10 @@
 package score_system;
 /**
  *
- * @author harmlk
+ * @author harmlk  
+ * 
+ * 
+ * 
  */
 public class Basic_score {
     

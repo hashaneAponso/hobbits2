@@ -162,8 +162,43 @@ public class WordUnscrambler {
             
            System.out.println(bestAnagram.getWord());
         }catch(Exception ex){
-        Logger.getLogger(WordUnscrambler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WordUnscrambler.class.getName()).log(Level.SEVERE, null, ex);
         }
     return bestAnagram;
+    }
+    
+    
+    public List<String> findValidWords(char letters[]){
+        
+        List<String> result = new ArrayList();
+        int []avail = new int[26];
+		  // Create dictionary
+		Dictionary dictionary = new Dictionary();
+		List<String> dict = dictionary.load();
+	try{	
+        for(char c : letters){
+            int index = c - 'a';
+            avail[index]++;
+        }
+        
+        for(String word: dict){
+            int []count = new int[26];
+            boolean ok = true;
+            for(char c : word.toCharArray()){
+                int index = c - 'a';
+                count[index]++;
+                if(count[index] > avail[index]){
+                    ok = false;
+                    break;
+                }
+            }
+            if(ok){
+                result.add(word);
+            }
+        }
+        }catch(Exception ex){
+                Logger.getLogger(WordUnscrambler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 }

@@ -49,9 +49,9 @@ public class Glory {
                 //play.setExtendedState(play.getExtendedState() | Frame.MAXIMIZED_BOTH);
                 
                 WordUnscrambler obj= new WordUnscrambler();
-                obj.GetAnagramsList("zoopoo");
-                
-                
+                //obj.GetAnagramsList("zoopoo");
+                String word="qwerty";
+               System.out.println(obj.findValidWords(word.toCharArray()));                 
                 //test for score 
 //                int no_of_players = 3;
 //                int no_of_bonus_letters_ = 3;

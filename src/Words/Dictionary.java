@@ -21,7 +21,7 @@ public class Dictionary {
 	public List<String> load() {
 		List<String> myDict = new ArrayList<String>();
 		try {
-			FileInputStream fstream = new FileInputStream("\\\\HASHANE\\Glory\\dictionary.txt");
+			FileInputStream fstream = new FileInputStream("C:\\Users\\User\\Desktop\\hobbits2\\dictionary.txt");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String str;

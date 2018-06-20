@@ -49,8 +49,8 @@ public class WordUnscrambler {
             }
             
             // Create dictionary
-		Dictionary dictionary = new Dictionary();
-		List<String> myDict = dictionary.load();
+		//Dictionary dictionary = new Dictionary();
+		List<String> myDict = VariableElement.myDict;
 		
 		
 		// Loop over all given words
@@ -124,8 +124,9 @@ public class WordUnscrambler {
             }
             
             // Create dictionary
-		Dictionary dictionary = new Dictionary();
-		List<String> myDict = dictionary.load();
+		//Dictionary dictionary = new Dictionary();
+                //Get dictionary word list
+		List<String> myDict = VariableElement.myDict;
 		
 		
 		// Loop over all given words
@@ -164,10 +165,7 @@ public class WordUnscrambler {
 				anagramsFound = 0;
 			}
 		}
-                //this.GetBestAnagram((ArrayList<WordElement>) newWordList);
                 
-            
-            
         }catch(Exception ex){
             Logger.getLogger(WordUnscrambler.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -244,21 +242,23 @@ public class WordUnscrambler {
     return bestAnagram;
     }
 
-	public List<String> findValidWords(char letters[]){ //change to return WordElement List
+	public ArrayList<WordElement> findValidWords(char letters[]){ 
+
         int []avail = new int[26];
-        List<String> result = new ArrayList(); //make this WordElement List
-		  // Create dictionary
+        ArrayList<WordElement> result = new ArrayList(); 
+		  
                   
         try{
+            // Create dictionary
         Dictionary dictionary = new Dictionary();
-        List<String> dict = dictionary.load();  // make this a cached List
+        VariableElement.myDict = dictionary.load();  // make this a cached
 		
         for(char c : letters){
             int index = c - 'a';
             avail[index]++;
         }
         
-        for(String word: dict){
+        for(String word: VariableElement.myDict){
             int []count = new int[26];
             boolean ok = true;
             for(char c : word.toCharArray()){
@@ -269,16 +269,19 @@ public class WordUnscrambler {
                     break;
                 }
             }
-			// check if an anagram exists for combination
+    
 			
 			
-			//if there is an existing anagram then add to the result
+              // check if there is a valid combination
             if(ok){
-                String wordFromAnagram="";
+                // check if an anagram exists for combination
+                
                 WordElement anagramWord=new WordElement();			
                 anagramWord=this.GetAnagramSingle(word);
-                if ((anagramWord.getWord()!="")&& anagramWord.getWord()!=null){				
-                    result.add(word);
+                
+                //if there is an existing anagram then add to the result
+                if ((anagramWord.getWord()!="")&& anagramWord.getWord()!=null){
+                    result.add(anagramWord);
                 }				
             }            
         }

@@ -25,6 +25,8 @@ public class VariableElement extends GloryElement{
    
     public static ArrayList<String> SpecialLetterList= new ArrayList<>();
     
+    public static List<String> myDict=new ArrayList<String>();
+    
     
     public VariableElement(String VariableName) {
         this.variableName = VariableName;

@@ -20,7 +20,6 @@ import java.util.Random;
  * @author Suhasini
  */
 public class Letter {
-      
  
 // function to select first three letters
     public List<LetterValueElement> FirstThreeLetters() {
@@ -44,31 +43,56 @@ public class Letter {
             }
         }
        this.KeepSpecialLetters(firstThreeLetters);
+       //System.out.println("done!" + specialLetters);
        return specialLetters;
     }
     
     // function to select first three letters from database
-    public List<LetterValueElement> SelectSpecial(){
-    List<LetterValueElement> returnList=null;
-    ArrayList<String> specialLetters= new ArrayList<String>();
+//    public List<LetterValueElement> SelectSpecial(){
+//    List<LetterValueElement> returnList=new ArrayList<LetterValueElement>();
+//    ArrayList<String> specialLetters= new ArrayList<String>();
+//        try {
+//              
+//                DBConnection dbManager=new DBConnection();
+//                String query="SELECT * FROM letter ORDER BY RAND() LIMIT 3";
+//                ResultSet rst= (ResultSet) dbManager.fetch(query);
+//                while(rst.next()){
+//                    LetterValueElement newLetter= new LetterValueElement();
+//                    newLetter.setLetter(rst.getString("letter"));
+//                    newLetter.setScore(rst.getInt("score"));
+//                    newLetter.setLetterType(rst.getString("letterType"));
+//                    newLetter.setLetterCount(rst.getInt("noOfLetters"));
+//                    newLetter.setLetterId(rst.getInt("letterId"));
+//                    returnList.add(newLetter);
+//                    specialLetters.add(rst.getString("letter"));
+//                }               
+//            } catch (Exception ex) {
+//                Logger.getLogger(Letter.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        //this.KeepSpecialLetters((String[]) specialLetters.toArray());
+//        return returnList;
+//    }
+    
+    //new**
+    public LetterValueElement SelectSpecial(){
+    LetterValueElement returnObj=null;
         try {
-              
                 DBConnection dbManager=new DBConnection();
-                String query="SELECT letter,score,letterType FROM letter ORDER BY RAND() LIMIT 3";
+                String query="SELECT * FROM letter ORDER BY RAND()";
                 ResultSet rst= (ResultSet) dbManager.fetch(query);
                 while(rst.next()){
                     LetterValueElement newLetter= new LetterValueElement();
                     newLetter.setLetter(rst.getString("letter"));
                     newLetter.setScore(rst.getInt("score"));
                     newLetter.setLetterType(rst.getString("letterType"));
-                    returnList.add(newLetter);
-                    specialLetters.add(rst.getString("letter"));
+                    newLetter.setLetterCount(rst.getInt("noOfLetters"));
+                    newLetter.setLetterId(rst.getInt("letterId"));
+                    returnObj=newLetter;
                 }               
             } catch (Exception ex) {
                 Logger.getLogger(Letter.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.KeepSpecialLetters((String[]) specialLetters.toArray());
-        return returnList;
+        return returnObj;
     }
     
     // function to select a vowel from database
@@ -76,13 +100,15 @@ public class Letter {
         LetterValueElement returnObj=new LetterValueElement();
         try{
             DBConnection dbManager=new DBConnection();
-            String query="SELECT letter,score,letterType FROM letter WHERE letterType=1 ORDER BY RAND() LIMIT 1";
+            String query="SELECT * FROM letter WHERE letterType=1 ORDER BY RAND() LIMIT 1";
             ResultSet rst= (ResultSet) dbManager.fetch(query);
             while(rst.next()){
                 LetterValueElement newVowel=new LetterValueElement();
                 newVowel.setLetter(rst.getString("letter"));
                 newVowel.setScore(rst.getInt("score"));
-                newVowel.setLetterType(rst.getString("letterType"));                
+                newVowel.setLetterType(rst.getString("letterType")); 
+                newVowel.setLetterCount(rst.getInt("noOfLetters"));
+                newVowel.setLetterId(rst.getInt("letterId"));
                 returnObj=newVowel;
             }          
             
@@ -97,13 +123,15 @@ public class Letter {
         LetterValueElement returnObj=null;
         try{
             DBConnection dbManager=new DBConnection();
-            String query="SELECT letter,score,letterType FROM letter WHERE letterType=2 ORDER BY RAND() LIMIT 1";
+            String query="SELECT * FROM letter WHERE letterType=2 ORDER BY RAND() LIMIT 1";
             ResultSet rst= (ResultSet) dbManager.fetch(query);
             while(rst.next()){
                 LetterValueElement newConsonants=new LetterValueElement();
                 newConsonants.setLetter(rst.getString("letter"));
                 newConsonants.setScore(rst.getInt("score"));
-                newConsonants.setLetterType(rst.getString("letterType"));                
+                newConsonants.setLetterType(rst.getString("letterType"));   
+                newConsonants.setLetterCount(rst.getInt("noOfLetters"));
+                newConsonants.setLetterId(rst.getInt("letterId"));
                 returnObj=newConsonants;
             } 
             

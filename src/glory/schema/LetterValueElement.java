@@ -15,16 +15,20 @@ public class LetterValueElement extends WordElement{
 private String letter;
 private int score;
 private String letterType;
+private int letterCount;
+private int letterId;
 
     public LetterValueElement() { 
         
     }
 
-    public LetterValueElement(String letter, int score, String letterType, int noOfLetters, char[] letters,String word) {
+    public LetterValueElement(String letter, int score, String letterType, int noOfLetters, char[] letters,String word,int letterCount, int letterId) {
         super(noOfLetters, letters, word);
         this.letter = letter;
         this.score = score;
         this.letterType = letterType;
+        this.letterCount = letterCount;
+        this.letterId = letterId;
     }
 
     public void setLetter(String letter) {
@@ -49,7 +53,21 @@ private String letterType;
      public int getScore() {
         return score;
     }
+     
+     public void setLetterCount(int letterCount) {
+        this.letterCount = letterCount;
+    }
     
-
+     public int getLetterCount() {
+        return letterCount;
+    }
+     
+    public void setLetterId(int letterId) {
+        this.letterId = letterId;
+    }
     
+     public int getLetterId() {
+        return letterId;
+    }
+     
 }

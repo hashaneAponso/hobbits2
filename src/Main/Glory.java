@@ -6,7 +6,10 @@
 package Main;
 
 import Glory_GUI.LoadingScreen;
+import Letters.Letter;
+import Letters.Letter_bag;
 import Words.WordUnscrambler;
+import glory.schema.LetterValueElement;
 import glory.schema.WordElement;
 import java.util.ArrayList;
 
@@ -94,7 +97,27 @@ public class Glory {
 //                score_system.trophies obj_tr = new score_system.trophies();
 //                int trophies_ = obj_tr.calc_trophies(place_, 3);
 //                System.out.println("trophies : " + trophies_);
-//                
+
+
+//get a letter vowel/consonant/special
+                          String notes = "";
+                          System.out.println("Show letters");
+                          Letter obj1= new Letter();
+                          LetterValueElement letterType_obj=new LetterValueElement();
+                          Letter_bag obj_bag = new Letter_bag();
+                          //String letter_type = "consonant";
+                          String letter_type = "vowel";
+                          //String letter_type = "special";
+                          
+                          int[] letter_count = obj_bag.letter_count_array();
+                          int[] taken_letter_count = obj_bag.taken_letter_count_array();
+                         
+                          //this method should be called several times to get several letters
+                          //change the first parameter to change the letter type vowel/consonant/special
+                          notes = obj_bag.get_letter(letter_type, letter_count, taken_letter_count, letterType_obj, obj1);
+                          
+                          System.out.println("result : " + notes);
+                                        
             }
         });
     }

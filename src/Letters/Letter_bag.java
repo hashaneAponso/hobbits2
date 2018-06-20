@@ -47,10 +47,10 @@ public class Letter_bag {
         List<LetterValueElement> mylist= new ArrayList<LetterValueElement>();
 	mylist=obj_bag.get_available_letters();
                           
-	System.out.println("All letters");
-        for(LetterValueElement vall:mylist){
-            System.out.println(vall.getLetterCount());
-        }
+//	System.out.println("All letters");
+//        for(LetterValueElement vall:mylist){
+//            System.out.println(vall.getLetterCount());
+//        }
         
         int[] letter_count = new int[26];
         

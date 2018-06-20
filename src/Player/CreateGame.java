@@ -25,14 +25,13 @@ public class CreateGame {
 
     public static String DBname;
 
-    public String create(String noOfPlayers) {
-        int val = 0;
-        String result = "false";
+    public String create() {
+        String result = null;
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
             Date date = new Date();
             String daten = (dateFormat.format(date));
-            DBname = noOfPlayers.trim() + "player-" + daten;
+            DBname = "Game-" + daten;
             System.out.println(DBname);
             DBConnection db = new DBConnection();
             //Statement statement = null;
@@ -47,15 +46,8 @@ public class CreateGame {
                     + " KEY `" + DBname + "` (`playerId`))"
                     + " ENGINE=INNODB DEFAULT CHARSET=latin1";
             PreparedStatement statement = db.InsertUpdate(query);
-           // val = statement.executeUpdate();
-            statement = null;
-            if (val > 0) {
-                result = DBname;
-                query = "INSERT INTO `logtable` (`tempTable`,`gameStatus`,`noOfPlayersConnecting`,`createTime`)"
-                        + "VALUES ('" + DBname + "','waiting',1,"+date+");";
-                statement = db.InsertUpdate(query);
-                val = statement.executeUpdate();
-            }
+            statement.executeUpdate();
+            result = DBname;
 
         } catch (Exception ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,6 +125,22 @@ public class CreateGame {
             Logger.getLogger(CreateGame.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
+    }
+
+    public boolean connectingLog(String dbName, Date date) {
+        boolean result = false;
+        try {
+            DBConnection db = new DBConnection();
+            String query = "INSERT INTO `logtable` (`tempTable`,`gameStatus`,`noOfPlayersConnecting`,`createTime`)"
+                    + "VALUES ('" + dbName + "','waiting',1," + date + ");";
+            PreparedStatement statement = db.InsertUpdate(query);
+            statement.executeUpdate();
+            result = true;
+        } catch (Exception ex) {
+            Logger.getLogger(CreateGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+
     }
 
 }

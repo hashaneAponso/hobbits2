@@ -7,6 +7,8 @@ package Main;
 
 import Glory_GUI.LoadingScreen;
 import Words.WordUnscrambler;
+import glory.schema.WordElement;
+import java.util.ArrayList;
 
 /**
  *
@@ -50,8 +52,14 @@ public class Glory {
                 
                 WordUnscrambler obj= new WordUnscrambler();
                 //obj.GetAnagramsList("zoopoo");
-                String word="qwerty";
-               System.out.println(obj.findValidWords(word.toCharArray()));                 
+                String word="aabderipoln";
+                ArrayList<WordElement> newList=obj.findValidWords(word.toCharArray());
+                for(WordElement ww:newList){
+                    System.out.println(ww.getWord());
+                }
+                  WordElement newWord=new WordElement();
+                  newWord=obj.GetBestAnagram(newList);
+                    System.out.println("BEST ANAGRAM = "+newWord.getWord());
                 //test for score 
 //                int no_of_players = 3;
 //                int no_of_bonus_letters_ = 3;

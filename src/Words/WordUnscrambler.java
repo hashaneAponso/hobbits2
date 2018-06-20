@@ -280,12 +280,9 @@ public class WordUnscrambler {
                 if ((anagramWord.getWord()!="")&& anagramWord.getWord()!=null){				
                     result.add(word);
                 }				
-            }
-            // if(ok){
-				
-                // result.add(word);
-            // }
-        }}catch(Exception ex){
+            }            
+        }
+        }catch(Exception ex){
         
         }
         return result;

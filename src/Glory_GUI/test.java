@@ -198,7 +198,7 @@ public class test extends javax.swing.JFrame {
         if (db != "false") {
             gameStrat(db);
         } else {
-            createGame.create("2");
+        //    createGame.create("2");
             gameStrat(db);
         }
 

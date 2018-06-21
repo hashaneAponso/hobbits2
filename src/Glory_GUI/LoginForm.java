@@ -189,7 +189,7 @@ public class LoginForm extends javax.swing.JFrame {
         boolean result=loginAttempt.PlayerLogin(username.getText(), jTextField1.getText());
         if(result==true){
               dispose();
-              new SignUpForm().setVisible(true);  
+              new GameMenu().setVisible(true);  
         }else{
             loginError.setVisible(true);
         }

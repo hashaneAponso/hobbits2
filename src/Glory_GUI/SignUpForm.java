@@ -19,7 +19,9 @@ public class SignUpForm extends javax.swing.JFrame {
      */
     public SignUpForm() {
         initComponents();
+        errorMsg1.setVisible(false);
         errorMsg2.setVisible(false);
+        errorMsg3.setVisible(false);
     }
 
     /**
@@ -243,7 +245,9 @@ public class SignUpForm extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
+        errorMsg1.setVisible(false);
         errorMsg2.setVisible(false);
+        errorMsg3.setVisible(false);
         boolean passwordCheck=this.CheckConfirmPassword();
         if(passwordCheck){
             boolean usernameCheck=this.CheckUserNameLength();
@@ -260,8 +264,8 @@ public class SignUpForm extends javax.swing.JFrame {
                         this.dispose();
                         new LoginForm().setVisible(true);                        
                     }else{                        
-                        errorMsg2.setText("Sorry something went wrong.");
-                        errorMsg2.setVisible(true);
+                        errorMsg3.setText("Sorry something went wrong.");
+                        errorMsg3.setVisible(true);
                     }
                 }
             }            
@@ -278,12 +282,12 @@ public class SignUpForm extends javax.swing.JFrame {
                // errorMsg.setVisible(false);
                 returnValue=true;
             }else{
-                errorMsg2.setText("Password does not match");
-                errorMsg2.setVisible(true);
+                errorMsg3.setText("Password does not match");
+                errorMsg3.setVisible(true);
             }
         }else if(valueToCheck==null){
-                errorMsg2.setText("Enter password again to confirm");
-                errorMsg2.setVisible(true);
+                errorMsg3.setText("Enter password again to confirm");
+                errorMsg3.setVisible(true);
         }
         
         return returnValue;
@@ -295,8 +299,8 @@ public class SignUpForm extends javax.swing.JFrame {
            // errorMsg.setVisible(false);
             returnValue=true;
         }else{
-         errorMsg2.setText("Username length exceeded. Maximum length is 12");
-         errorMsg2.setVisible(true);
+         errorMsg1.setText("Username length exceeded. Maximum length is 12");
+         errorMsg1.setVisible(true);
         }
         return returnValue;    
     }

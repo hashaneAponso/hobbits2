@@ -6,6 +6,7 @@
 package Main;
 
 import Glory_GUI.LoadingScreen;
+import Glory_GUI.LoginForm;
 import Letters.Letter;
 import Letters.Letter_bag;
 import Words.WordUnscrambler;
@@ -49,20 +50,20 @@ public class Glory {
                 
               //  IntroVideo intro = new IntroVideo();
               //  intro.setVisible(true);  
-                //LoginForm play = new LoginForm();
-                //play.setVisible(true);
+                LoginForm play = new LoginForm();
+                play.setVisible(true);
                 //play.setExtendedState(play.getExtendedState() | Frame.MAXIMIZED_BOTH);
                 
-                WordUnscrambler obj= new WordUnscrambler();
-                //obj.GetAnagramsList("zoopoo");
-                String word="aabderipoln";
-                ArrayList<WordElement> newList=obj.findValidWords(word.toCharArray());
-                for(WordElement ww:newList){
-                    System.out.println(ww.getWord());
-                }
-                  WordElement newWord=new WordElement();
-                  newWord=obj.GetBestAnagram(newList);
-                    System.out.println("BEST ANAGRAM = "+newWord.getWord());
+//                WordUnscrambler obj= new WordUnscrambler();
+//                //obj.GetAnagramsList("zoopoo");
+//                String word="aabderipoln";
+//                ArrayList<WordElement> newList=obj.findValidWords(word.toCharArray());
+//                for(WordElement ww:newList){
+//                    System.out.println(ww.getWord());
+//                }
+//                  WordElement newWord=new WordElement();
+//                  newWord=obj.GetBestAnagram(newList);
+//                    System.out.println("BEST ANAGRAM = "+newWord.getWord());
                 //test for score 
 //                int no_of_players = 3;
 //                int no_of_bonus_letters_ = 3;

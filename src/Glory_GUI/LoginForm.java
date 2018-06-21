@@ -6,6 +6,7 @@
 package Glory_GUI;
 
 import Player.Login;
+import Settings.SoundEffect;
 
 /**
  *
@@ -187,6 +188,8 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         Login loginAttempt= new Login();
         boolean result=loginAttempt.PlayerLogin(username.getText(), jTextField1.getText());
+        
+        SoundEffect.BUTTONCLICK.play();
         if(result==true){
               dispose();
               new GameMenu().setVisible(true);  

@@ -6,6 +6,7 @@
 package Glory_GUI;
 
 import Player.Register;
+import Settings.SoundEffect;
 import glory.schema.PlayersElement;
 
 /**
@@ -245,6 +246,7 @@ public class SignUpForm extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
+        SoundEffect.BUTTONCLICK.play();
         errorMsg1.setVisible(false);
         errorMsg2.setVisible(false);
         errorMsg3.setVisible(false);
